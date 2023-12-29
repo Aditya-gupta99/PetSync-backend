@@ -4,10 +4,9 @@ import com.sparklead.Payload.FoodRequest;
 import com.sparklead.Service.PetService;
 import com.sparklead.model.Food;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/petSync")
@@ -17,8 +16,12 @@ public class PetController {
     private PetService petService;
 
     @PostMapping("/post")
-    public void postPetFood(@RequestBody FoodRequest foodRequest){
+    public void postPetFood(@RequestBody FoodRequest foodRequest) {
         petService.postPetFood(foodRequest);
     }
 
+    @GetMapping("/allList")
+    public List<Food> getAllListFood() {
+        return petService.getListPetFood();
+    }
 }

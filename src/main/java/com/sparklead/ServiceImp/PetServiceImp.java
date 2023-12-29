@@ -7,6 +7,8 @@ import com.sparklead.model.Food;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PetServiceImp implements PetService {
 
@@ -19,5 +21,10 @@ public class PetServiceImp implements PetService {
         food.setPet(foodRequest.getPet());
         food.setTimestamp(foodRequest.getTimestamp());
         petRepository.save(food);
+    }
+
+    @Override
+    public List<Food> getListPetFood() {
+        return petRepository.findAll();
     }
 }
