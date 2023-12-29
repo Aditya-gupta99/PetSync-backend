@@ -13,7 +13,6 @@ public class PetSyncApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(PetSyncApplication.class, args);
-        System.out.println("Hello world!");
     }
 
 }
