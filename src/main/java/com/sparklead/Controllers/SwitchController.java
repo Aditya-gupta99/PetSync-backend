@@ -1,5 +1,6 @@
 package com.sparklead.Controllers;
 
+import com.sparklead.Payload.OnOffResponse;
 import com.sparklead.Service.SwitchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,7 +16,7 @@ public class SwitchController {
     private SwitchService switchService;
 
     @PostMapping("/onOff")
-    public String onOffDispenser(@RequestBody String message) {
+    public OnOffResponse onOffDispenser(@RequestBody String message) {
         return switchService.switchDispenser(message);
     }
 

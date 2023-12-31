@@ -15,7 +15,7 @@ public class PetController {
     @Autowired
     private PetService petService;
 
-    @PostMapping("/post")
+    @PostMapping("/food")
     public void postPetFood(@RequestBody FoodRequest foodRequest) {
         petService.postPetFood(foodRequest);
     }

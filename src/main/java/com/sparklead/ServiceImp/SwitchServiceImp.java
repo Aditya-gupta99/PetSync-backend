@@ -1,5 +1,6 @@
 package com.sparklead.ServiceImp;
 
+import com.sparklead.Payload.OnOffResponse;
 import com.sparklead.Service.SwitchService;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
@@ -9,9 +10,9 @@ import org.springframework.web.client.RestTemplate;
 public class SwitchServiceImp implements SwitchService {
 
     @Override
-    public String switchDispenser(String message) {
+    public OnOffResponse switchDispenser(String message) {
 
-        String url = "http://localhost:8000/petSync/raspberry/onOff";
+        String url = "http://192.168.104.21:8000/petSync/raspberry/onOff";
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -27,9 +28,12 @@ public class SwitchServiceImp implements SwitchService {
                 String.class
         );
         if (responseEntity.getStatusCode().is2xxSuccessful()) {
-            return responseEntity.getBody();
+            OnOffResponse onOffResponse = new OnOffResponse();
+            onOffResponse.setMessage(responseEntity.getBody());
+            System.out.println(onOffResponse);
+            return onOffResponse;
         } else {
-            return responseEntity.getStatusCode().toString();
+            return new OnOffResponse();
         }
     }
 }
