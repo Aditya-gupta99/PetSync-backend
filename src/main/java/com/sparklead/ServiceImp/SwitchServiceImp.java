@@ -12,7 +12,7 @@ public class SwitchServiceImp implements SwitchService {
     @Override
     public OnOffResponse switchDispenser(String message) {
 
-        String url = "http://192.168.104.21:8000/petSync/raspberry/onOff";
+        String url = "http://192.168.203.120:8000/petSync/raspberry/onOff";
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
